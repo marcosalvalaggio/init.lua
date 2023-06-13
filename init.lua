@@ -1,2 +1,1 @@
 require("poznan")
-print("hello" )
