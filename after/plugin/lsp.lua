@@ -8,7 +8,8 @@ lsp.ensure_installed({
   'lua_ls',
   'marksman',
   'jedi_language_server',
-  'pyright'
+  'pyright',
+  'clang-format',
 })
 
 -- Fix Undefined global 'vim'
