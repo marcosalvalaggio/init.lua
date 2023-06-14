@@ -9,4 +9,4 @@ vim.api.nvim_set_keymap('v', '<C-c>', '"+y', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-v>', '"+p', { noremap = true })
 vim.api.nvim_set_keymap("n", "<S-s>", ":Vista<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<S-d>", ":Vista!<CR>", { noremap = true, silent = true })
-
+vim.api.nvim_set_keymap("n", "<leader>jj", ":%jq .<CR>", { noremap = true, silent = true })
