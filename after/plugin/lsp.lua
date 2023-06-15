@@ -9,7 +9,6 @@ lsp.ensure_installed({
   'marksman',
   'jedi_language_server',
   'pyright',
-  'clang-format',
 })
 
 -- Fix Undefined global 'vim'
