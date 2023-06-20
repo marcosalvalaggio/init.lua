@@ -11,3 +11,8 @@ vim.api.nvim_set_keymap("n", "<S-s>", ":Vista<CR>", { noremap = true, silent = t
 vim.api.nvim_set_keymap("n", "<S-d>", ":Vista!<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>jj", ":%jq .<CR>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("n", "<leader>bd", ":bd<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<S-t>", ":terminal<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-]>', '>>', {noremap = true})
+vim.api.nvim_set_keymap('n', '<C-[>', '<<', {noremap = true})
+vim.api.nvim_set_keymap('v', '<C-]>', '>gv', {noremap = true})
+vim.api.nvim_set_keymap('v', '<C-[>', '<gv', {noremap = true})
