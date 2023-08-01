@@ -21,4 +21,5 @@ vim.api.nvim_set_keymap('n', '<leader>q', ':q!<CR>', {noremap=true})
 vim.api.nvim_set_keymap('n', '<leader>w', ':w<CR>', {noremap=true})
 vim.api.nvim_set_keymap('n', '<leader>s', ':wq<CR>', {noremap=true})
 vim.api.nvim_set_keymap('n', '<C-a>', ':normal! gg0vG$<CR>', {noremap=true})
-
+vim.api.nvim_set_keymap('n', '<C-/>', ':Commentary<CR>', {noremap=true})
+vim.api.nvim_set_keymap('v', '<C-/>', ':Commentary<CR>', {noremap=true})
