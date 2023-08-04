@@ -68,4 +68,7 @@ return require('packer').startup(function(use)
 	  }
   }
 
+  use("marcosalvalaggio/funktree")
+
+
 end)
