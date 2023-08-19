@@ -70,6 +70,7 @@ return require('packer').startup(function(use)
   }
 
   use("marcosalvalaggio/funktree")
+  use("mbbill/undotree")
 
 
 end)
