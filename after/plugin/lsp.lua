@@ -5,7 +5,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'rust_analyzer',
   'pyright',
-  'golangci_lint_ls',
+  'gopls',
   'clangd',
   'cmake',
   'lua_ls',
