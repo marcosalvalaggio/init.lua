@@ -5,72 +5,56 @@ vim.cmd [[packadd packer.nvim]]
 
 return require('packer').startup(function(use)
   -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-  
-  use {
-   'nvim-telescope/telescope.nvim', tag = '0.1.1',
-   -- or                            , branch = '0.1.x',
-   requires = { {'nvim-lua/plenary.nvim'} }
-  }
-
-   -- use({
-   --  'rose-pine/neovim',
-   --  as = 'rose-pine',
-   --  config = function()
-   --   vim.cmd('colorscheme rose-pine')
-   --  end
-   -- })
-
-  use("theprimeagen/harpoon")
-  use("rebelot/kanagawa.nvim")
-  use({
-   "kdheepak/lazygit.nvim",
-   -- optional for floating window border decoration
-   requires = {
-    "nvim-lua/plenary.nvim",
-   },
-  })
+  use 'wbthomason/packer.nvim' 
+  -- Zen mode
   use("folke/zen-mode.nvim")
+  -- Autocomment
   use("tpope/vim-commentary")
+  -- Lean & mean status/tabline 
   use("vim-airline/vim-airline")
+  -- Indent
   use("lukas-reineke/indent-blankline.nvim")
   use("liuchengxu/vista.vim")
+  -- Git change
   use("airblade/vim-gitgutter")
- use({
-  "nvim-treesitter/nvim-treesitter",
-  run = function()
-   require("nvim-treesitter.install").update({ with_sync = true })
-   require 'nvim-treesitter.install'.compilers = { "gcc" }
-  end,
- })
-  use("nvim-treesitter/playground")
-
-
-  use {
-	  'VonHeikemen/lsp-zero.nvim',
-	  branch = 'v1.x',
-	  requires = {
-		  -- LSP Support
-		  {'neovim/nvim-lspconfig'},
-		  {'williamboman/mason.nvim'},
-		  {'williamboman/mason-lspconfig.nvim'},
-
-		  -- Autocompletion
-		  {'hrsh7th/nvim-cmp'},
-		  {'hrsh7th/cmp-buffer'},
-		  {'hrsh7th/cmp-path'},
-		  {'saadparwaiz1/cmp_luasnip'},
-		  {'hrsh7th/cmp-nvim-lsp'},
-		  {'hrsh7th/cmp-nvim-lua'},
-
-		  -- Snippets
-		  {'L3MON4D3/LuaSnip'},
-		  {'rafamadriz/friendly-snippets'},
-	  }
-  }
-
+  -- Best plugin ever build
   use("marcosalvalaggio/funktree")
+  -- Undotree plug
   use("mbbill/undotree")
+  -- Best color scheme
+  use("blazkowolf/gruber-darker.nvim")
+  -- Harpoon + dependencies
+  use "nvim-lua/plenary.nvim"
+  use {
+    "ThePrimeagen/harpoon",
+    branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
+  -- Telescope (fuzzy finder)
+  use {
+    'nvim-telescope/telescope.nvim', tag = '0.1.6',
+    -- or                            , branch = '0.1.x',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
+  -- Treesitter
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate'
+  }
+  -- LSP
+  use {
+  'VonHeikemen/lsp-zero.nvim',
+  branch = 'v3.x',
+  requires = {
+    --- Uncomment the two plugins below if you want to manage the language servers from neovim
+    {'williamboman/mason.nvim'},
+    {'williamboman/mason-lspconfig.nvim'},
 
+    {'neovim/nvim-lspconfig'},
+    {'hrsh7th/nvim-cmp'},
+    {'hrsh7th/cmp-nvim-lsp'},
+    {'L3MON4D3/LuaSnip'},
+  }
+}
 
 end)

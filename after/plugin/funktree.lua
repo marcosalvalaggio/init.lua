@@ -1,1 +1,1 @@
-vim.api.nvim_set_keymap('n', '<leader>u', ':Funk<CR>', {noremap=true})
+vim.api.nvim_set_keymap('n', '<leader>k', ':Funk<CR>', {noremap=true})
