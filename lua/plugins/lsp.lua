@@ -34,6 +34,7 @@ return {
             lspconfig.pyright.setup{}
             -- lspconfig.quick_lint_js.setup{}
             lspconfig.tsserver.setup{}
+            lspconfig.rust_analyzer.setup{}
             -- keymap
             vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
             vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
