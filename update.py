@@ -37,7 +37,7 @@ def delete_file(file_path: str) -> None:
 def update_contents(source_path: str) -> None:
     try:
         destination_path = os.getcwd()
-        for root, dirs, files in os.walk(source_path):
+        for root, _, files in os.walk(source_path):
             relative_path = os.path.relpath(root, source_path)
             destination_root = os.path.join(destination_path, relative_path)
             os.makedirs(destination_root, exist_ok=True)
