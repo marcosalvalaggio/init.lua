@@ -1,12 +1,18 @@
+-- return {
+--   'thimc/gruber-darker.nvim',
+--   config = function()
+--     require('gruber-darker').setup({
+--       -- OPTIONAL
+--       transparent = true, -- removes the background
+--       -- underline = false, -- disables underline fonts
+--       -- bold = false, -- disables bold fonts
+--     })
+--     vim.cmd.colorscheme('gruber-darker')
+--   end,
+-- }
 return {
-  'thimc/gruber-darker.nvim',
+  'EdenEast/nightfox.nvim',
   config = function()
-    require('gruber-darker').setup({
-      -- OPTIONAL
-      transparent = true, -- removes the background
-      -- underline = false, -- disables underline fonts
-      -- bold = false, -- disables bold fonts
-    })
-    vim.cmd.colorscheme('gruber-darker')
+    vim.cmd.colorscheme('duskfox')
   end,
 }
