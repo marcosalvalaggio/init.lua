@@ -1,58 +1,68 @@
 return {
-	{ "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-	{
-		"neovim/nvim-lspconfig",
-		lazy = false,
-		config = function()
-			local lspconfig = require("lspconfig")
-			local cmp_nvim_lsp = require("cmp_nvim_lsp")
-			local capabilities = cmp_nvim_lsp.default_capabilities()
-			lspconfig.lua_ls.setup({ capabilities = capabilities })
-			lspconfig.pyright.setup({
-                capabilities = capabilities,
-                settings = {
-                    python = {
-                        analysis = {
-                             typeCheckingMode = "strict",
-                        },
-                    },
-                },
+    "neovim/nvim-lspconfig",
+    dependencies = {
+        "williamboman/mason.nvim",
+        "williamboman/mason-lspconfig.nvim",
+        "hrsh7th/nvim-cmp",
+        "hrsh7th/cmp-nvim-lsp",
+        "L3MON4D3/LuaSnip",
+        "saadparwaiz1/cmp_luasnip",
+    },
+
+    config = function()
+        -- Basic setup
+        require("mason").setup()
+        require("mason-lspconfig").setup({
+            ensure_installed = {
+                "lua_ls",
+                "rust_analyzer",
+                "gopls",
+                "pyright",
+                "tailwindcss",
+                "clangd",
+                "eslint"
+            },
+        })
+
+        local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+        local lspconfig = require("lspconfig")
+        require("mason-lspconfig").setup_handlers({
+            function(server_name)
+                lspconfig[server_name].setup({
+                    capabilities = capabilities,
+                })
+            end,
+        })
+
+        local cmp = require("cmp")
+        cmp.setup({
+            snippet = {
+                expand = function(args)
+                    require('luasnip').lsp_expand(args.body)
+                end,
+            },
+            mapping = cmp.mapping.preset.insert({
+                ['<C-p>'] = cmp.mapping.select_prev_item(),
+                ['<C-n>'] = cmp.mapping.select_next_item(),
+                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+                ['<C-Space>'] = cmp.mapping.complete(),
+            }),
+            sources = cmp.config.sources({
+                { name = 'nvim_lsp' },
+                { name = 'luasnip' },
             })
-			lspconfig.tsserver.setup({ capabilities = capabilities })
-			lspconfig.rust_analyzer.setup({ capabilities = capabilities })
-			lspconfig.gopls.setup({ capabilities = capabilities })
-			-- keymap
-			vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
-			vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
-			vim.keymap.set("n", "go", vim.lsp.buf.type_definition, {})
-			vim.keymap.set("n", "gf", vim.lsp.buf.rename, {})
-			vim.keymap.set({ "n", "v" }, "<leader>ca", vim.lsp.buf.code_action, {})
-		end,
-	},
-	{
-		"hrsh7th/cmp-nvim-lsp",
-		config = function()
-			local cmp = require("cmp")
-			local luasnip = require("luasnip")
-			cmp.setup({
-				snippet = {
-					expand = function(args)
-						luasnip.lsp_expand(args.body)
-					end,
-				},
-				mapping = {
-					["<C-y>"] = cmp.mapping.confirm({ select = false }),
-					["<C-e>"] = cmp.mapping.abort(),
-					["<Up>"] = cmp.mapping.select_prev_item({ behavior = "select" }),
-					["<Down>"] = cmp.mapping.select_next_item({ behavior = "select" }),
-				},
-				sources = {
-					{ name = "nvim_lsp" },
-					{ name = "luasnip" },
-				},
-			})
-		end,
-	},
-	{ "hrsh7th/nvim-cmp" },
-	{ "L3MON4D3/LuaSnip" },
+        })
+
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, { desc = "Go to definition" })
+        vim.keymap.set('n', 'gD', vim.lsp.buf.declaration, { desc = "Go to declaration" })
+        vim.keymap.set('n', 'gi', vim.lsp.buf.implementation, { desc = "Go to implementation" })
+        vim.keymap.set('n', 'gr', vim.lsp.buf.references, { desc = "Find references" })
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover documentation" })
+        vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
+        vim.keymap.set('n', '<leader>a', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+        vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
+        vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Next diagnostic" })
+    end
 }
