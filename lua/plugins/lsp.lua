@@ -61,7 +61,7 @@ return {
         vim.keymap.set('n', 'K', vim.lsp.buf.hover, { desc = "Hover documentation" })
         vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, { desc = "Rename symbol" })
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, { desc = "Code actions" })
-        vim.keymap.set('n', '<leader>a', vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
+        vim.keymap.set('n', '<leader>t',vim.diagnostic.setloclist, { desc = "Open diagnostics list" })
         vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = "Previous diagnostic" })
         vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = "Next diagnostic" })
     end
