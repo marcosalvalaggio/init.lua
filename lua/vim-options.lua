@@ -38,3 +38,13 @@ vim.api.nvim_set_keymap("n", "<leader>s", ":wq<CR>", { noremap = true })
 vim.api.nvim_set_keymap("n", "<leader>bd", ":bd<CR>", { noremap = true, silent = true })
 -- delete the hlg code of search
 vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
+
+-- Autocommands per l'indentazione specifica
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "html", "javascript", "ruby", "typescript", "c", "cpp", "sh", "lua" },
+  callback = function()
+    vim.opt_local.shiftwidth = 2
+    vim.opt_local.tabstop = 2
+    vim.opt_local.softtabstop = 2
+  end,
+})
