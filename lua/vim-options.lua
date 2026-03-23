@@ -48,3 +48,6 @@ vim.api.nvim_create_autocmd("FileType", {
     vim.opt_local.softtabstop = 2
   end,
 })
+
+vim.keymap.set('t', '<Esc>', [[<C-\><C-n>]], {noremap = true})
+vim.keymap.set('n', '<leader>t', ":terminal<CR>", { noremap = true})
