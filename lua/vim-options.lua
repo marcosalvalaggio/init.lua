@@ -41,7 +41,7 @@ vim.keymap.set("n", "<leader>h", ":nohlsearch<CR>")
 
 -- Autocommands per l'indentazione specifica
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "html", "javascript", "ruby", "typescript", "c", "cpp", "sh", "lua" },
+  pattern = { "html", "javascript", "typescript", "sh", "lua" },
   callback = function()
     vim.opt_local.shiftwidth = 2
     vim.opt_local.tabstop = 2

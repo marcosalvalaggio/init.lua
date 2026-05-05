@@ -6,10 +6,16 @@
 -- 		vim.cmd("colorscheme rose-pine")
 -- 	end
 -- }
+-- return {
+--   "savq/melange-nvim",
+--   config = function()
+--     vim.cmd("colorscheme melange")
+--   end
+-- }
 return {
-  "savq/melange-nvim",
+  "shaunsingh/nord.nvim",
+  name = "nord",
   config = function()
-    vim.cmd("colorscheme melange")
+    vim.cmd("colorscheme nord")
   end
 }
-
